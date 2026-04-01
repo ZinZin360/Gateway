@@ -11,21 +11,30 @@ class User2Service
     * @var string
     */
     public $baseUri;
+    
+    /**
+    * The secret to consume the User2 Service
+    * @var string
+    */
+    public $secret;
 
     public function __construct()
     {
         $this->baseUri = config('services.users2.base_uri');
+        $this->secret = config('services.users2.secret');
     }
 
-    //For get (all)
+    //get userjob
+    public function obtainUserJob($jobid)
+    {
+        return $this->performRequest('GET', "/userjob/{$jobid}");
+    }
+
+    //Get Users
     public function obtainUsers2()
     {
         return $this->performRequest('GET','/users2');
     }
-     /**
-     * Create one user using the User2 service
-     * @return string
-     */
     
     //For Add
     public function createUser2($data)
@@ -33,7 +42,7 @@ class User2Service
         return $this->performRequest('POST', '/users2', $data);
     }
 
-    //For get by ID
+    //For get
     public function obtainUser2($id)
     {
         return $this->performRequest('GET', "/users2/{$id}");
