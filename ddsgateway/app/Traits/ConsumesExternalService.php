@@ -26,9 +26,9 @@ trait ConsumesExternalService
         $response = $client->request($method, $requestUrl, [
             'form_params' => $form_params,
             'headers' => $headers,
-            'http_errors' => false // 🔥 THIS LINE FIXES EVERYTHING
+            'http_errors' => false
         ]);
 
-        return $response->getBody()->getContents(), true;
+        return $response->getBody()->getContents();
     }
 }
