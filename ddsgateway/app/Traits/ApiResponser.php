@@ -14,6 +14,9 @@ trait ApiResponser
     
     public function successResponse($data, $code = Response::HTTP_OK)
     {
+        // Since $data is now a string (from Step 1), this works!
+        return response($data, $code)->header('Content-Type', 'application/json');
+    }
         // old code 
         // // return response()->json(['data' => $data, 'site' => 1], $code);
         // // this code is changes since the message to return is already formatted by API responser of each site

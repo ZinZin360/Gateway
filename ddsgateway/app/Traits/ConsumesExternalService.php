@@ -29,6 +29,6 @@ trait ConsumesExternalService
             'http_errors' => false // 🔥 THIS LINE FIXES EVERYTHING
         ]);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return $response->getBody()->getContents(), true;
     }
 }
